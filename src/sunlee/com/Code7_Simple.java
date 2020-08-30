@@ -22,7 +22,7 @@ package sunlee.com;
  * @author sunlee
  * @date 2020/8/30 9:38
  */
-public class Code2 {
+public class Code7_Simple {
     public static void main(String[] args) {
         System.out.println(reverse2(Integer.MIN_VALUE));
     }

@@ -18,7 +18,7 @@ import java.util.Map;
  * @author sunlee
  * @date 2020/8/28 23:34
  */
-public class Code1 {
+public class Code1_Simple {
     public static void main(String[] args) {
         int[] nums = {2, 7, 11, 15};
         int[] ints = twoSum2(nums, 9);

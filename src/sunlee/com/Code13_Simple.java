@@ -105,7 +105,6 @@ public class Code13_Simple {
      * map解法,其实就是先判断两位数的是否存在，存在则取两位的相加，否则取一位的相加
      * 在判断时要注意最后一位
      */
-
     public static int romanToInt2(String s) {
         Map<String, Integer> map = new HashMap();
         map.put("I", 1);

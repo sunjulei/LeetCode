@@ -26,25 +26,27 @@ package sunlee.com;
 public class Code14_Simple {
 
     public static void main(String[] args) {
-        String str[] = new String[]{"flosw", "flos", "floswm"};
+        String str[] = new String[]{"flosw", "flos", "faloasawm"};
         System.out.println(longestCommonPrefix(str));
     }
 
+
+    /**
+     * 纵向扫描
+     */
     public static String longestCommonPrefix(String[] strs) {
         if (strs == null || strs.length == 0) {
             return "";
         }
-        int length = strs[0].length();
-        int count = strs.length;
-        for (int i = 0; i < length; i++) {
-            char c = strs[0].charAt(i);
-            for (int j = 1; j < count; j++) {
-                if (i == strs[j].length() || strs[j].charAt(i) != c) {
-                    return strs[0].substring(0, i);
+
+        String pre = strs[0];
+        for (int i = 0; i < pre.length(); i++) {
+            for (int j = 1; j < strs.length; j++) {
+                if (i==strs[j].length()||pre.charAt(i)!=strs[j].charAt(i)){
+                    return pre.substring(0,i);
                 }
             }
         }
-        return strs[0];
+        return pre;
     }
-
 }

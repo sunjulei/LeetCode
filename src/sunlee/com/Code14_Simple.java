@@ -26,8 +26,8 @@ package sunlee.com;
 public class Code14_Simple {
 
     public static void main(String[] args) {
-        String str[] = new String[]{"flosw", "flos", "faloasawm"};
-        System.out.println(longestCommonPrefix(str));
+        String str[] = new String[]{"flosw", "flos", "floaloasawm"};
+        System.out.println(longestCommonPrefix2(str));
     }
 
 
@@ -42,11 +42,41 @@ public class Code14_Simple {
         String pre = strs[0];
         for (int i = 0; i < pre.length(); i++) {
             for (int j = 1; j < strs.length; j++) {
-                if (i==strs[j].length()||pre.charAt(i)!=strs[j].charAt(i)){
-                    return pre.substring(0,i);
+                if (i == strs[j].length() || pre.charAt(i) != strs[j].charAt(i)) {
+                    return pre.substring(0, i);
                 }
             }
         }
         return pre;
+    }
+
+    /**
+     * 横向扫描
+     */
+    public static String longestCommonPrefix2(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+
+        String pre = strs[0];
+        for (int i = 1; i < strs.length; i++) {
+            pre = comparedTo(pre, strs[i]);
+            if (pre.length() == 0) {
+                break;
+            }
+        }
+        return pre;
+    }
+
+    private static String comparedTo(String str1, String str2) {
+
+        int i = 0;
+        int s1Len = str1.length();
+        int s2Len = str2.length();
+        int minLen = s1Len < s2Len ? s1Len : s2Len;
+        while (i < minLen && str1.charAt(i) == str2.charAt(i)) {
+            i++;
+        }
+        return str1.substring(0,i);
     }
 }

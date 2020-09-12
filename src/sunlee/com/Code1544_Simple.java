@@ -61,17 +61,27 @@ public class Code1544_Simple {
 //        System.out.println(a - A); // input 32
 //        System.out.println(a ^ A); // input 32
 
-        System.out.println(makeGood("abBAcC"));
+        System.out.println(makeGood("leEeetcode"));
     }
 
     public static String makeGood(String s) {
-        for (int i = 0; i < s.toCharArray().length; i++) {
-            if (Math.abs(s.charAt(i) - s.charAt(i + 1)) == 32) {
-                s = s.substring(0, i) + s.substring(i + 2);
-                makeGood(s);
-                break;
+        StringBuilder ref = new StringBuilder();
+        int refIndex=-1;
+        int len = s.length();
+
+        for (int i = 0; i < len; i++) {
+            char ch = s.charAt(i);
+            if (ref.length()>0 &&
+                    Character.toLowerCase(ch)==Character.toLowerCase(ref.charAt(refIndex)) &&
+                    //(ch ^ ref.charAt(refIndex))==32 &&
+                    ch!=ref.charAt(refIndex)){
+                ref.deleteCharAt(refIndex);
+                refIndex--;
+            }else {
+                ref.append(ch);
+                refIndex++;
             }
         }
-        return s;
+        return ref.toString();
     }
 }

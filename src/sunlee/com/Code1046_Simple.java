@@ -1,5 +1,6 @@
 package sunlee.com;
 
+import java.util.Arrays;
 import java.util.PriorityQueue;
 
 /**
@@ -37,10 +38,22 @@ import java.util.PriorityQueue;
 public class Code1046_Simple {
 
     public static void main(String[] args) {
-
+        Code1046_Simple code = new Code1046_Simple();
+        int[] arr = new int[]{2,7,4,1,8,1};
+        System.out.println(code.lastStoneWeight(arr));
     }
 
+    /**
+     * 排序解法
+     */
     public int lastStoneWeight(int[] stones) {
-
+        Arrays.sort(stones);
+        int len=stones.length;
+        while (stones[len-2]!=0){
+            stones[len-1]=stones[len-1]-stones[len-2];
+            stones[len-2]=0;
+            Arrays.sort(stones);
+        }
+        return stones[len-1];
     }
 }
